@@ -1,0 +1,35 @@
+<div class="nav-bar" style="position: fixed;">
+    <a href="/" class="back-icon">
+        <i class="fa-solid fa-circle-arrow-left" style="color: #b8b8b8;"></i>
+    </a>    
+    <div class="file-name">
+        <%= fileName %>
+    </div>
+</div>
+
+<div class="search-bar">
+    <div>
+        <p id="total-rows">Total Rows: <%=length%></p>
+    </div>
+</div>
+
+<div class="result-aria">
+    <table>
+        <thead>
+            <tr>
+            <% for(let h of head) { %>
+                <th><%= h %></th>
+            <% } %>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let row of data) { %>
+            <tr>
+                <% for(let key of Object.keys(row)) { %>
+                    <td><%= row[key] %></td>
+                <% } %>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>

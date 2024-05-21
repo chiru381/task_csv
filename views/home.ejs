@@ -1,0 +1,41 @@
+
+<div class="container">
+    <h1>Upload a File Here</h1>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="input-container">
+            <input type="file" id="csvFile" name="file" accept=".csv">
+            <button class="upload-btn">Upload</button>
+        </div>
+    </form>
+</div>
+
+<div class="files-list">  
+    <% if(files.length==0) { %>
+        <div class="no-file">No files to show!</div>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                <th>File_Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>View</th>
+                <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let file of files) { %>
+                <tr>
+                    <td><%= file.fileName %></td>
+                    <td><%= file.createdAt.toLocaleDateString() %></td>
+                    <td><%= file.createdAt.toLocaleTimeString() %></td>
+                    <td><a href="/view/<%= file.file %>"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                    <td><a href="/delete/<%= file.file %>"><i class="fa-regular fa-trash-can " style="color: #f00;"></i></a></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+
